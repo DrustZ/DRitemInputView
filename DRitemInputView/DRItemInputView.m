@@ -201,7 +201,7 @@ layout:
     [_label_array removeObject:del_label];
     if (del_label == _last_tapped_label) _last_tapped_label = nil;
     
-    CGPoint currentoffset = self.contentOffset;
+    __block CGPoint oldoffset = [self contentOffset];
     
     [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         [del_label removeFromSuperview];
@@ -237,7 +237,14 @@ layout:
         [self setContentSize:CGSizeMake(self.frame.size.width, height_now)];
         //after delete, the cursor will show
         [self.textfield becomeFirstResponder];
-        [self setContentOffset:currentoffset animated:NO];
+        //and return to the offset before delete
+        if (row_now < maxrow)
+            [self setContentOffset:CGPointZero];
+        else{
+            if (oldoffset.y + self.frame.size.height > self.contentSize.height)
+                oldoffset = CGPointMake(0, self.contentSize.height - self.frame.size.height);
+            [self setContentOffset:oldoffset animated:NO];
+        }
     } completion:nil];
     
     if (_label_array.count == 0)
