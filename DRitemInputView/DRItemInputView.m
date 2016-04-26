@@ -310,6 +310,7 @@ layout:
     }
     if (rowBefore < maxrow && rowAdded > 0){
         CGFloat changeHeight = (rowBefore + rowAdded) > maxrow ? maxrow * (label_margin_y + label_height) : (rowAdded + rowBefore) * (label_margin_y + label_height);
+        changeHeight += content_margin_top;
         if (changeHeight > self.frame.size.height){
             changeViewHeightAndWidth(self, changeHeight, -1);
             if (self.DRdelegate)
