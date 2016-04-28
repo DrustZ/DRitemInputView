@@ -46,7 +46,7 @@
 //and set the view's frame height referring to the value returned
 - (CGFloat)calculateRowHeight;
 
-//call these methods anytime after showing the view:)
+//call these methods anytime after adding the view as subview:)
 - (void)deleteSelectedLabel;
 
 - (void)deleteLabelAtIndex:(NSInteger)idx;
@@ -54,8 +54,6 @@
 - (void)appendLabelwithTextFieldText;
 
 - (void)appendLabelwithText:(NSString*)text;
-
-- (void)appendLabelwithText:(NSString*)text backgroundColor:(UIColor*)color;
 
 - (void)selectLastLabel;
 

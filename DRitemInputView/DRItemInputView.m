@@ -101,7 +101,8 @@ layout:
     return self;
 }
 
-- (void)willMoveToWindow:(UIWindow *)newWindow{
+- (void)willMoveToSuperview:(UIView *)newSuperview{
+
     width_now = content_margin_left;
     height_now = content_margin_top;
     initial_height = self.frame.size.height;
@@ -257,10 +258,6 @@ layout:
 }
 
 - (void)appendLabelwithText:(NSString*)text{
-    [self appendLabelwithText:text backgroundColor:nil];
-}
-
-- (void)appendLabelwithText:(NSString*)text backgroundColor:(UIColor*)color{
     if (text.length <= 0) return;
     self.textfield.placeholder = nil;
     
